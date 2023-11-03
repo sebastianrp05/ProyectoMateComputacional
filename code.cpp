@@ -1,6 +1,5 @@
-#include <conio.h>
 #include <iostream>
-
+#include <conio.h>
 using namespace std;
 
 void imprimir_matriz(bool** matriz, int n) {
@@ -14,7 +13,6 @@ void imprimir_matriz(bool** matriz, int n) {
 	cout << endl;
 }
 int main() {
-
 	int n = 0, opcion;
 	do
 	{
@@ -33,14 +31,10 @@ int main() {
 	bool** matriz_ordenada = new bool* [n];
 	for (int i = 0; i < n; i++)
 		matriz_ordenada[i] = new bool[n];
-	//bool nerfeo[5] = { 0,0,0,0,1 };
-	//matriz = matriz de adyacencia, sea aleatoria o manual
-	//matriz_aux = matriz de caminos, aqui se haran todos los calculos de los for
-	//verificador = vector verificador para que revise si hay unos nuevos, en case sea ese se recorre de nuevo
-	//matriz_ordenada = matriz donde se alamcena la matriz ordenada por filas y columnas
+
 	do
 	{
-		cout << char(168)<< "Desea digitar los valores o generarlos aleatoriamente? (0= random 1= manualmente): "; cin >> opcion;
+		cout << char(168) << "Desea digitar los valores o generarlos aleatoriamente? (0= random 1= manualmente): "; cin >> opcion;
 	} while (opcion != 0 && opcion != 1);
 	if (opcion == 0)
 	{
@@ -107,7 +101,7 @@ int main() {
 	}
 	cout << "Matriz de caminos: (sin la diagonal llena de 1s) \n\n";
 	imprimir_matriz(matriz_aux, n);
-	// Añade 1's a la diagonal de la matriz auxiliar <- when gpt
+	// Añade 1's a la diagonal de la matriz auxiliar 
 	for (int i = 0; i < n; i++) {
 		matriz_aux[i][i] = 1;
 	}
@@ -118,7 +112,7 @@ int main() {
 	int* contador = new int[n];
 	for (int i = 0; i < n; i++) { contador[i] = 0; }//inicializa el vector contador en 0
 	bool* vector_auxiliar = new bool[n]; //auxiliar para ordenar las filas y columnas
-	int auxiliar_fila = 0; //auxiliar para el auxiliar XD
+	int auxiliar_fila = 0; 
 	int* col_aux = new int[n];
 	for (int i = 0; i < n; i++) { col_aux[i] = i; } //aux futuro para las columnas se inicializa en 0,1,2,3...
 	//para asi tener el orden de como poner las columnas
@@ -161,7 +155,7 @@ int main() {
 	for (int i = 0; i < n; i++)
 		matriz_col_aux[i] = new bool[n];
 
-	for (int i = 0; i < n; i++) {//copiando la matriz ordenada en una matriz auxiliar yet again
+	for (int i = 0; i < n; i++) {//copiando la matriz ordenada en una matriz auxiliar 
 		for (int j = 0; j < n; j++) {
 			matriz_col_aux[i][j] = matriz_ordenada[i][j];
 		}
@@ -205,11 +199,8 @@ int main() {
 		//cout << auxiliar_unos << " ";
 		cout << "La componente conexa " << cantidadconexas << " inicia en [" << x << "][" << x << "] hasta ";
 		x += auxiliar_unos;
-		cout << "[" << x-1 << "]" << "[" << x-1 << "]"<<endl;
+		cout << "[" << x - 1 << "]" << "[" << x - 1 << "]" << endl;
 	} while (x < n);
-
-
-	system("pause");
 
 	for (int i = 0; i < n; i++) {
 		delete[] matriz[i];
@@ -227,6 +218,5 @@ int main() {
 		delete[] matriz_col_aux[i];
 	}
 	delete[] matriz_col_aux;
-
-
+	system("pause");
 }
